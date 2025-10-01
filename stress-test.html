@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แบบทดสอบความเครียด</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            box-sizing: border-box;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .slide-up {
+            animation: slideUp 0.6s ease-out;
+        }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .highlight-required {
+            animation: shake 0.5s ease-in-out;
+            border-color: #ef4444 !important;
+            background-color: #fef2f2 !important;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-5px); }
+            75% { transform: translateX(5px); }
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-50 to-indigo-100 min-h-screen font-thai">
+    <div class="container mx-auto px-4 py-8 max-w-4xl">
+        <!-- Header -->
+        <div class="text-center mb-8 fade-in">
+            <h1 class="text-4xl font-bold text-indigo-800 mb-4">🧠 แบบทดสอบความเครียด</h1>
+            <p class="text-lg text-gray-600">ประเมินระดับความเครียดของคุณในด้านต่าง ๆ</p>
+        </div>
+
+        <!-- Quiz Container -->
+        <div id="quizContainer" class="bg-white rounded-2xl shadow-xl p-8 fade-in">
+            <!-- Quiz 1: Work Stress -->
+            <div id="quiz1" class="quiz-section">
+                <div class="mb-6">
+                    <h2 class="text-2xl font-bold text-indigo-700 mb-2">📊 ชุดที่ 1: ความเครียดเกี่ยวกับเรื่องงาน</h2>
+                    <div class="bg-indigo-50 p-4 rounded-lg">
+                        <p class="text-indigo-800 font-medium">กรุณาเลือกคำตอบที่ตรงกับสถานการณ์ของคุณมากที่สุด</p>
+                        <div class="mt-2 text-sm text-indigo-600">
+                            <span class="inline-block mr-4">0 = ไม่เลย</span>
+                            <span class="inline-block mr-4">1 = บางครั้ง</span>
+                            <span class="inline-block">2 = บ่อยครั้ง</span>
+                        </div>
+                        <div class="mt-2 text-sm text-red-600 font-medium">
+                            ⚠️ กรุณาตอบคำถามทุกข้อให้ครบถ้วน
+                        </div>
+                    </div>
+                </div>
+
+                <form id="workStressForm" class="space-y-6">
+                    <div class="question-item p-6 bg-gray-50 rounded-xl border-l-4 border-indigo-400">
+                        <p class="text-lg font-medium text-gray-800 mb-4">1. ฉันมักจะคิดเรื่องงานจนหลับไม่สนิทหรือนอนไม่พอ</p>
+                        <div class="flex gap-6">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q1" value="0" class="mr-2 text-indigo-600">
+                                <span class="text-gray-700">ไม่เลย</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q1" value="1" class="mr-2 text-indigo-600">
+                                <span class="text-gray-700">บางครั้ง</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q1" value="2" class="mr-2 text-indigo-600">
+                                <span class="text-gray-700">บ่อยครั้ง</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-item p-6 bg-gray-50 rounded-xl border-l-4 border-indigo-400">
+                        <p class="text-lg font-medium text-gray-800 mb-4">2. เวลามีงานเยอะ ฉันเลือกทำเอง ไม่ค่อยขอความช่วยเหลือ</p>
+                        <div class="flex gap-6">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q2" value="0" class="mr-2 text-indigo-600">
+                                <span class="text-gray-700">ไม่เลย</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q2" value="1" class="mr-2 text-indigo-600">
+                                <span class="text-gray-700">บางครั้ง</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q2" value="2" class="mr-2 text-indigo-600">
+                                <span class="text-gray-700">บ่อยครั้ง</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-item p-6 bg-gray-50 rounded-xl border-l-4 border-indigo-400">
+                        <p class="text-lg font-medium text-gray-800 mb-4">3. ฉันเคยรู้สึกท้อแท้ เหมือนทำงานหนักแต่ไม่มีใครเห็นคุณค่า</p>
+                        <div class="flex gap-6">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q3" value="0" class="mr-2 text-indigo-600">
+                                <span class="text-gray-700">ไม่เลย</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q3" value="1" class="mr-2 text-indigo-600">
+                                <span class="text-gray-700">บางครั้ง</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q3" value="2" class="mr-2 text-indigo-600">
+                                <span class="text-gray-700">บ่อยครั้ง</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-item p-6 bg-gray-50 rounded-xl border-l-4 border-indigo-400">
+                        <p class="text-lg font-medium text-gray-800 mb-4">4. เวลามีปัญหากับเพื่อนร่วมงาน ฉันเก็บไว้ ไม่กล้าพูดออกมา</p>
+                        <div class="flex gap-6">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q4" value="0" class="mr-2 text-indigo-600">
+                                <span class="text-gray-700">ไม่เลย</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q4" value="1" class="mr-2 text-indigo-600">
+                                <span class="text-gray-700">บางครั้ง</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q4" value="2" class="mr-2 text-indigo-600">
+                                <span class="text-gray-700">บ่อยครั้ง</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-item p-6 bg-gray-50 rounded-xl border-l-4 border-indigo-400">
+                        <p class="text-lg font-medium text-gray-800 mb-4">5. ฉันดื่มกาแฟหรือเครื่องดื่มชูกำลังเกินวันละ 2 แก้วเพราะงานเยอะ</p>
+                        <div class="flex gap-6">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q5" value="0" class="mr-2 text-indigo-600">
+                                <span class="text-gray-700">ไม่เลย</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q5" value="1" class="mr-2 text-indigo-600">
+                                <span class="text-gray-700">บางครั้ง</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q5" value="2" class="mr-2 text-indigo-600">
+                                <span class="text-gray-700">บ่อยครั้ง</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-item p-6 bg-gray-50 rounded-xl border-l-4 border-indigo-400">
+                        <p class="text-lg font-medium text-gray-800 mb-4">6. ฉันรู้สึกเหนื่อยง่าย เบื่อหน่าย แม้เป็นงานที่เคยสนุก</p>
+                        <div class="flex gap-6">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q6" value="0" class="mr-2 text-indigo-600">
+                                <span class="text-gray-700">ไม่เลย</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q6" value="1" class="mr-2 text-indigo-600">
+                                <span class="text-gray-700">บางครั้ง</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q6" value="2" class="mr-2 text-indigo-600">
+                                <span class="text-gray-700">บ่อยครั้ง</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-item p-6 bg-gray-50 rounded-xl border-l-4 border-indigo-400">
+                        <p class="text-lg font-medium text-gray-800 mb-4">7. ฉันหงุดหงิดง่ายกับเรื่องเล็ก ๆ น้อย ๆ ที่ทำงาน</p>
+                        <div class="flex gap-6">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q7" value="0" class="mr-2 text-indigo-600">
+                                <span class="text-gray-700">ไม่เลย</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q7" value="1" class="mr-2 text-indigo-600">
+                                <span class="text-gray-700">บางครั้ง</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q7" value="2" class="mr-2 text-indigo-600">
+                                <span class="text-gray-700">บ่อยครั้ง</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-item p-6 bg-gray-50 rounded-xl border-l-4 border-indigo-400">
+                        <p class="text-lg font-medium text-gray-800 mb-4">8. เวลามีปัญหาส่วนตัว ฉันไม่รู้ว่าจะปรึกษาใครในที่ทำงาน</p>
+                        <div class="flex gap-6">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q8" value="0" class="mr-2 text-indigo-600">
+                                <span class="text-gray-700">ไม่เลย</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q8" value="1" class="mr-2 text-indigo-600">
+                                <span class="text-gray-700">บางครั้ง</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q8" value="2" class="mr-2 text-indigo-600">
+                                <span class="text-gray-700">บ่อยครั้ง</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-item p-6 bg-gray-50 rounded-xl border-l-4 border-indigo-400">
+                        <p class="text-lg font-medium text-gray-800 mb-4">9. ฉันเคยทำงานจนลืมกินข้าวหรือลืมพัก</p>
+                        <div class="flex gap-6">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q9" value="0" class="mr-2 text-indigo-600">
+                                <span class="text-gray-700">ไม่เลย</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q9" value="1" class="mr-2 text-indigo-600">
+                                <span class="text-gray-700">บางครั้ง</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q9" value="2" class="mr-2 text-indigo-600">
+                                <span class="text-gray-700">บ่อยครั้ง</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-item p-6 bg-gray-50 rounded-xl border-l-4 border-indigo-400">
+                        <p class="text-lg font-medium text-gray-800 mb-4">10. ฉันรู้สึกว่า "ที่ทำงาน" ไม่ใช่ที่ปลอดภัยสำหรับการพูดความจริง</p>
+                        <div class="flex gap-6">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q10" value="0" class="mr-2 text-indigo-600">
+                                <span class="text-gray-700">ไม่เลย</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q10" value="1" class="mr-2 text-indigo-600">
+                                <span class="text-gray-700">บางครั้ง</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q10" value="2" class="mr-2 text-indigo-600">
+                                <span class="text-gray-700">บ่อยครั้ง</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-item p-6 bg-gray-50 rounded-xl border-l-4 border-indigo-400">
+                        <p class="text-lg font-medium text-gray-800 mb-4">11. ฉันเคยปวดหัว ปวดท้อง หรือปวดไหล่จากความเครียด</p>
+                        <div class="flex gap-6">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q11" value="0" class="mr-2 text-indigo-600">
+                                <span class="text-gray-700">ไม่เลย</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q11" value="1" class="mr-2 text-indigo-600">
+                                <span class="text-gray-700">บางครั้ง</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q11" value="2" class="mr-2 text-indigo-600">
+                                <span class="text-gray-700">บ่อยครั้ง</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-item p-6 bg-gray-50 rounded-xl border-l-4 border-indigo-400">
+                        <p class="text-lg font-medium text-gray-800 mb-4">12. คุณเคยรู้สึกว่าตัวเองไม่มีพลังหรือแรงจูงใจในการทำสิ่งต่าง ๆ หรือไม่?</p>
+                        <div class="flex gap-6">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q12" value="0" class="mr-2 text-indigo-600">
+                                <span class="text-gray-700">ไม่เลย</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q12" value="1" class="mr-2 text-indigo-600">
+                                <span class="text-gray-700">บางครั้ง</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="q12" value="2" class="mr-2 text-indigo-600">
+                                <span class="text-gray-700">บ่อยครั้ง</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-8">
+                        <button type="submit" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-8 rounded-xl text-lg transition-colors duration-300 shadow-lg">
+                            📊 ดูผลคะแนนชุดที่ 1
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Quiz 1 Results -->
+            <div id="quiz1Results" class="quiz-section hidden">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-indigo-700 mb-4">📈 ผลคะแนนชุดที่ 1: ความเครียดเกี่ยวกับเรื่องงาน</h2>
+                </div>
+                
+                <div id="quiz1ScoreCard" class="mb-8"></div>
+                
+                <div class="text-center">
+                    <button id="startQuiz2Btn" class="bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-8 rounded-xl text-lg transition-colors duration-300 shadow-lg">
+                        ➡️ ทำแบบทดสอบชุดที่ 2
+                    </button>
+                </div>
+            </div>
+
+            <!-- Quiz 2: Daily Life Stress -->
+            <div id="quiz2" class="quiz-section hidden">
+                <div class="mb-6">
+                    <h2 class="text-2xl font-bold text-green-700 mb-2">🏠 ชุดที่ 2: ความเครียดเกี่ยวกับชีวิตประจำวัน</h2>
+                    <div class="bg-green-50 p-4 rounded-lg">
+                        <p class="text-green-800 font-medium">กรุณาเลือกคำตอบที่ตรงกับสถานการณ์ของคุณมากที่สุด</p>
+                        <div class="mt-2 text-sm text-green-600">
+                            <span class="inline-block mr-4">0 = ไม่เลย</span>
+                            <span class="inline-block mr-4">1 = บางครั้ง</span>
+                            <span class="inline-block">2 = บ่อยครั้ง</span>
+                        </div>
+                        <div class="mt-2 text-sm text-red-600 font-medium">
+                            ⚠️ กรุณาตอบคำถามทุกข้อให้ครบถ้วน
+                        </div>
+                    </div>
+                </div>
+
+                <form id="dailyStressForm" class="space-y-6">
+                    <div class="question-item p-6 bg-gray-50 rounded-xl border-l-4 border-green-400">
+                        <p class="text-lg font-medium text-gray-800 mb-4">1. ในช่วง 1–2 สัปดาห์ที่ผ่านมา คุณนอนหลับได้ยากหรือตื่นกลางดึกบ่อย ๆ หรือไม่?</p>
+                        <div class="flex gap-6">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="d1" value="0" class="mr-2 text-green-600">
+                                <span class="text-gray-700">ไม่เลย</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="d1" value="1" class="mr-2 text-green-600">
+                                <span class="text-gray-700">บางครั้ง</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="d1" value="2" class="mr-2 text-green-600">
+                                <span class="text-gray-700">บ่อยครั้ง</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-item p-6 bg-gray-50 rounded-xl border-l-4 border-green-400">
+                        <p class="text-lg font-medium text-gray-800 mb-4">2. คุณรู้สึกเหนื่อยล้า แม้จะพักผ่อนแล้วหรือไม่?</p>
+                        <div class="flex gap-6">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="d2" value="0" class="mr-2 text-green-600">
+                                <span class="text-gray-700">ไม่เลย</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="d2" value="1" class="mr-2 text-green-600">
+                                <span class="text-gray-700">บางครั้ง</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="d2" value="2" class="mr-2 text-green-600">
+                                <span class="text-gray-700">บ่อยครั้ง</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-item p-6 bg-gray-50 rounded-xl border-l-4 border-green-400">
+                        <p class="text-lg font-medium text-gray-800 mb-4">3. คุณหงุดหงิดหรืออารมณ์เสียง่ายกว่าปกติหรือไม่?</p>
+                        <div class="flex gap-6">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="d3" value="0" class="mr-2 text-green-600">
+                                <span class="text-gray-700">ไม่เลย</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="d3" value="1" class="mr-2 text-green-600">
+                                <span class="text-gray-700">บางครั้ง</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="d3" value="2" class="mr-2 text-green-600">
+                                <span class="text-gray-700">บ่อยครั้ง</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-item p-6 bg-gray-50 rounded-xl border-l-4 border-green-400">
+                        <p class="text-lg font-medium text-gray-800 mb-4">4. คุณรู้สึกไม่มีสมาธิในการทำงานหรือไม่?</p>
+                        <div class="flex gap-6">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="d4" value="0" class="mr-2 text-green-600">
+                                <span class="text-gray-700">ไม่เลย</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="d4" value="1" class="mr-2 text-green-600">
+                                <span class="text-gray-700">บางครั้ง</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="d4" value="2" class="mr-2 text-green-600">
+                                <span class="text-gray-700">บ่อยครั้ง</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-item p-6 bg-gray-50 rounded-xl border-l-4 border-green-400">
+                        <p class="text-lg font-medium text-gray-800 mb-4">5. คุณเคยปวดหัว ปวดเมื่อย หรือท้องอืด โดยไม่ทราบสาเหตุหรือไม่?</p>
+                        <div class="flex gap-6">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="d5" value="0" class="mr-2 text-green-600">
+                                <span class="text-gray-700">ไม่เลย</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="d5" value="1" class="mr-2 text-green-600">
+                                <span class="text-gray-700">บางครั้ง</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="d5" value="2" class="mr-2 text-green-600">
+                                <span class="text-gray-700">บ่อยครั้ง</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-item p-6 bg-gray-50 rounded-xl border-l-4 border-green-400">
+                        <p class="text-lg font-medium text-gray-800 mb-4">6. คุณรู้สึกว่าตัวเอง "ไม่มีเวลา" หรือรีบเร่งตลอดเวลาหรือไม่?</p>
+                        <div class="flex gap-6">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="d6" value="0" class="mr-2 text-green-600">
+                                <span class="text-gray-700">ไม่เลย</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="d6" value="1" class="mr-2 text-green-600">
+                                <span class="text-gray-700">บางครั้ง</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="d6" value="2" class="mr-2 text-green-600">
+                                <span class="text-gray-700">บ่อยครั้ง</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-item p-6 bg-gray-50 rounded-xl border-l-4 border-green-400">
+                        <p class="text-lg font-medium text-gray-800 mb-4">7. คุณมักเลี่ยงการพบเจอผู้คน หรือไม่อยากเข้าสังคมหรือไม่?</p>
+                        <div class="flex gap-6">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="d7" value="0" class="mr-2 text-green-600">
+                                <span class="text-gray-700">ไม่เลย</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="d7" value="1" class="mr-2 text-green-600">
+                                <span class="text-gray-700">บางครั้ง</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="d7" value="2" class="mr-2 text-green-600">
+                                <span class="text-gray-700">บ่อยครั้ง</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-item p-6 bg-gray-50 rounded-xl border-l-4 border-green-400">
+                        <p class="text-lg font-medium text-gray-800 mb-4">8. คุณคิดวนเวียนหรือกังวลเรื่องงาน/เรื่องส่วนตัวบ่อย ๆ หรือไม่?</p>
+                        <div class="flex gap-6">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="d8" value="0" class="mr-2 text-green-600">
+                                <span class="text-gray-700">ไม่เลย</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="d8" value="1" class="mr-2 text-green-600">
+                                <span class="text-gray-700">บางครั้ง</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="d8" value="2" class="mr-2 text-green-600">
+                                <span class="text-gray-700">บ่อยครั้ง</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-item p-6 bg-gray-50 rounded-xl border-l-4 border-green-400">
+                        <p class="text-lg font-medium text-gray-800 mb-4">9. คุณรู้สึกว่าควบคุมชีวิตหรือสถานการณ์รอบตัวได้ยากหรือไม่?</p>
+                        <div class="flex gap-6">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="d9" value="0" class="mr-2 text-green-600">
+                                <span class="text-gray-700">ไม่เลย</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="d9" value="1" class="mr-2 text-green-600">
+                                <span class="text-gray-700">บางครั้ง</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="d9" value="2" class="mr-2 text-green-600">
+                                <span class="text-gray-700">บ่อยครั้ง</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-item p-6 bg-gray-50 rounded-xl border-l-4 border-green-400">
+                        <p class="text-lg font-medium text-gray-800 mb-4">10. คุณมักกินมากเกินไป / เบื่ออาหาร / นอนไม่เป็นเวลาในช่วงที่เครียดหรือไม่?</p>
+                        <div class="flex gap-6">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="d10" value="0" class="mr-2 text-green-600">
+                                <span class="text-gray-700">ไม่เลย</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="d10" value="1" class="mr-2 text-green-600">
+                                <span class="text-gray-700">บางครั้ง</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="d10" value="2" class="mr-2 text-green-600">
+                                <span class="text-gray-700">บ่อยครั้ง</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-item p-6 bg-gray-50 rounded-xl border-l-4 border-green-400">
+                        <p class="text-lg font-medium text-gray-800 mb-4">11. คุณเคยรู้สึกว่า "หมดไฟ" หรือไม่อยากทำอะไรเลยหรือไม่?</p>
+                        <div class="flex gap-6">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="d11" value="0" class="mr-2 text-green-600">
+                                <span class="text-gray-700">ไม่เลย</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="d11" value="1" class="mr-2 text-green-600">
+                                <span class="text-gray-700">บางครั้ง</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="d11" value="2" class="mr-2 text-green-600">
+                                <span class="text-gray-700">บ่อยครั้ง</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="question-item p-6 bg-gray-50 rounded-xl border-l-4 border-green-400">
+                        <p class="text-lg font-medium text-gray-800 mb-4">12. คุณมีความรู้สึกท้อแท้หรือเศร้า โดยหาสาเหตุไม่ชัดเจนหรือไม่?</p>
+                        <div class="flex gap-6">
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="d12" value="0" class="mr-2 text-green-600">
+                                <span class="text-gray-700">ไม่เลย</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="d12" value="1" class="mr-2 text-green-600">
+                                <span class="text-gray-700">บางครั้ง</span>
+                            </label>
+                            <label class="flex items-center cursor-pointer">
+                                <input type="radio" name="d12" value="2" class="mr-2 text-green-600">
+                                <span class="text-gray-700">บ่อยครั้ง</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="text-center mt-8">
+                        <button type="submit" class="bg-green-600 hover:bg-green-700 text-white font-bold py-4 px-8 rounded-xl text-lg transition-colors duration-300 shadow-lg">
+                            📊 ดูผลคะแนนชุดที่ 2
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Final Results -->
+            <div id="finalResults" class="quiz-section hidden">
+                <div class="text-center mb-8">
+                    <h2 class="text-3xl font-bold text-purple-700 mb-4">🎯 สรุปผลการประเมินความเครียดทั้งหมด</h2>
+                </div>
+                
+                <div id="finalScoreCards" class="space-y-6 mb-8"></div>
+                
+                <div class="text-center">
+                    <button id="restartBtn" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-4 px-8 rounded-xl text-lg transition-colors duration-300 shadow-lg">
+                        🔄 ทำแบบทดสอบใหม่
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let quiz1Score = 0;
+        let quiz2Score = 0;
+
+        // Handle Quiz 1 submission
+        document.getElementById('workStressForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Check if all questions are answered
+            const unansweredQuestions = [];
+            for (let i = 1; i <= 12; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                if (!selected) {
+                    unansweredQuestions.push(i);
+                }
+            }
+            
+            if (unansweredQuestions.length > 0) {
+                // Highlight unanswered questions
+                unansweredQuestions.forEach(qNum => {
+                    const questionItem = document.querySelector(`input[name="q${qNum}"]`).closest('.question-item');
+                    questionItem.classList.add('highlight-required');
+                    setTimeout(() => {
+                        questionItem.classList.remove('highlight-required');
+                    }, 2000);
+                });
+                
+                alert(`❗ กรุณาตอบคำถามข้อที่ ${unansweredQuestions.join(', ')} ให้ครบถ้วน`);
+                
+                // Scroll to first unanswered question
+                const firstUnanswered = document.querySelector(`input[name="q${unansweredQuestions[0]}"]`);
+                firstUnanswered.closest('.question-item').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+            
+            // Calculate score
+            quiz1Score = 0;
+            for (let i = 1; i <= 12; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                if (selected) {
+                    quiz1Score += parseInt(selected.value);
+                }
+            }
+            
+            // Show results
+            showQuiz1Results();
+        });
+
+        // Handle Quiz 2 submission
+        document.getElementById('dailyStressForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Check if all questions are answered
+            const unansweredQuestions = [];
+            for (let i = 1; i <= 12; i++) {
+                const selected = document.querySelector(`input[name="d${i}"]:checked`);
+                if (!selected) {
+                    unansweredQuestions.push(i);
+                }
+            }
+            
+            if (unansweredQuestions.length > 0) {
+                // Highlight unanswered questions
+                unansweredQuestions.forEach(qNum => {
+                    const questionItem = document.querySelector(`input[name="d${qNum}"]`).closest('.question-item');
+                    questionItem.classList.add('highlight-required');
+                    setTimeout(() => {
+                        questionItem.classList.remove('highlight-required');
+                    }, 2000);
+                });
+                
+                alert(`❗ กรุณาตอบคำถามข้อที่ ${unansweredQuestions.join(', ')} ให้ครบถ้วน`);
+                
+                // Scroll to first unanswered question
+                const firstUnanswered = document.querySelector(`input[name="d${unansweredQuestions[0]}"]`);
+                firstUnanswered.closest('.question-item').scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+            
+            // Calculate score
+            quiz2Score = 0;
+            for (let i = 1; i <= 12; i++) {
+                const selected = document.querySelector(`input[name="d${i}"]:checked`);
+                if (selected) {
+                    quiz2Score += parseInt(selected.value);
+                }
+            }
+            
+            // Show final results
+            showFinalResults();
+        });
+
+        // Start Quiz 2
+        document.getElementById('startQuiz2Btn').addEventListener('click', function() {
+            document.getElementById('quiz1Results').classList.add('hidden');
+            document.getElementById('quiz2').classList.remove('hidden');
+            document.getElementById('quiz2').classList.add('slide-up');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        // Restart quiz
+        document.getElementById('restartBtn').addEventListener('click', function() {
+            // Reset scores
+            quiz1Score = 0;
+            quiz2Score = 0;
+            
+            // Reset forms
+            document.getElementById('workStressForm').reset();
+            document.getElementById('dailyStressForm').reset();
+            
+            // Show first quiz
+            document.getElementById('finalResults').classList.add('hidden');
+            document.getElementById('quiz1').classList.remove('hidden');
+            document.getElementById('quiz1').classList.add('slide-up');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        function getStressLevel(score) {
+            if (score <= 6) {
+                return {
+                    level: 'เครียดน้อย',
+                    color: 'green',
+                    bgColor: 'bg-green-100',
+                    textColor: 'text-green-800',
+                    borderColor: 'border-green-400',
+                    recommendation: 'จัดการได้เอง - คุณมีระดับความเครียดที่อยู่ในเกณฑ์ปกติ'
+                };
+            } else if (score <= 15) {
+                return {
+                    level: 'มีภาวะเครียด',
+                    color: 'yellow',
+                    bgColor: 'bg-yellow-100',
+                    textColor: 'text-yellow-800',
+                    borderColor: 'border-yellow-400',
+                    recommendation: 'ควรหาวิธีผ่อนคลาย เช่น ออกกำลังกาย หยุดพัก'
+                };
+            } else {
+                return {
+                    level: 'เครียดมาก',
+                    color: 'red',
+                    bgColor: 'bg-red-100',
+                    textColor: 'text-red-800',
+                    borderColor: 'border-red-400',
+                    recommendation: 'ควรหาที่ปรึกษา พูดคุยกับหัวหน้า เพื่อน หรือผู้เชี่ยวชาญ'
+                };
+            }
+        }
+
+        function showQuiz1Results() {
+            const stressInfo = getStressLevel(quiz1Score);
+            
+            const resultCard = `
+                <div class="p-8 rounded-2xl border-4 ${stressInfo.borderColor} ${stressInfo.bgColor} slide-up">
+                    <div class="text-center mb-6">
+                        <div class="text-6xl mb-4">📊</div>
+                        <h3 class="text-2xl font-bold ${stressInfo.textColor} mb-2">คะแนนความเครียดเรื่องงาน</h3>
+                        <div class="text-4xl font-bold ${stressInfo.textColor} mb-4">${quiz1Score}/24 คะแนน</div>
+                        <div class="text-xl font-semibold ${stressInfo.textColor} mb-4">${stressInfo.level}</div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl">
+                        <h4 class="font-bold text-gray-800 mb-2">💡 คำแนะนำ:</h4>
+                        <p class="text-gray-700">${stressInfo.recommendation}</p>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('quiz1ScoreCard').innerHTML = resultCard;
+            document.getElementById('quiz1').classList.add('hidden');
+            document.getElementById('quiz1Results').classList.remove('hidden');
+            document.getElementById('quiz1Results').classList.add('slide-up');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showFinalResults() {
+            const quiz1Info = getStressLevel(quiz1Score);
+            const quiz2Info = getStressLevel(quiz2Score);
+            const totalScore = quiz1Score + quiz2Score;
+            const totalInfo = getStressLevel(totalScore);
+            
+            const finalCards = `
+                <div class="grid md:grid-cols-2 gap-6 mb-8">
+                    <div class="p-6 rounded-xl border-4 ${quiz1Info.borderColor} ${quiz1Info.bgColor}">
+                        <h3 class="text-xl font-bold ${quiz1Info.textColor} mb-3">📊 ความเครียดเรื่องงาน</h3>
+                        <div class="text-3xl font-bold ${quiz1Info.textColor} mb-2">${quiz1Score}/24</div>
+                        <div class="text-lg font-semibold ${quiz1Info.textColor}">${quiz1Info.level}</div>
+                    </div>
+                    
+                    <div class="p-6 rounded-xl border-4 ${quiz2Info.borderColor} ${quiz2Info.bgColor}">
+                        <h3 class="text-xl font-bold ${quiz2Info.textColor} mb-3">🏠 ความเครียดชีวิตประจำวัน</h3>
+                        <div class="text-3xl font-bold ${quiz2Info.textColor} mb-2">${quiz2Score}/24</div>
+                        <div class="text-lg font-semibold ${quiz2Info.textColor}">${quiz2Info.level}</div>
+                    </div>
+                </div>
+                
+                <div class="p-8 rounded-2xl border-4 ${totalInfo.borderColor} ${totalInfo.bgColor} text-center">
+                    <div class="text-6xl mb-4">🎯</div>
+                    <h3 class="text-3xl font-bold ${totalInfo.textColor} mb-4">คะแนนรวมทั้งหมด</h3>
+                    <div class="text-5xl font-bold ${totalInfo.textColor} mb-4">${totalScore}/48 คะแนน</div>
+                    <div class="text-2xl font-semibold ${totalInfo.textColor} mb-6">${totalInfo.level}</div>
+                    <div class="bg-white p-6 rounded-xl">
+                        <h4 class="font-bold text-gray-800 mb-3 text-xl">💡 คำแนะนำสำหรับคุณ:</h4>
+                        <p class="text-gray-700 text-lg">${totalInfo.recommendation}</p>
+                        <div class="mt-4 p-4 bg-blue-50 rounded-lg">
+                            <p class="text-blue-800 text-sm">
+                                <strong>หมายเหตุ:</strong> ผลการประเมินนี้เป็นเพียงแนวทางเบื้องต้น หากคุณรู้สึกว่าความเครียดส่งผลกระทบต่อชีวิตประจำวันอย่างมาก 
+                                ควรปรึกษาผู้เชี่ยวชาญด้านสุขภาพจิตเพื่อการดูแลที่เหมาะสม
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('finalScoreCards').innerHTML = finalCards;
+            document.getElementById('quiz2').classList.add('hidden');
+            document.getElementById('finalResults').classList.remove('hidden');
+            document.getElementById('finalResults').classList.add('slide-up');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9879f3617000799c',t:'MTc1OTMwMDYzOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
